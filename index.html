@@ -7,13 +7,13 @@
 <meta name="description" content="Ímpeto Estudantil, a chama da mudança. Acesse o site da chapa e entre na nossa Comunidade do WhatsApp.">
 <meta name="theme-color" content="#0e0d0d">
 <style>
-/* =====================================================================
-   ÍMPETO ESTUDANTIL · página de links (para a bio do Instagram)
-   Para trocar links, músicas ou a data, edite o bloco "CONFIGURAÇÃO" no fim do arquivo.
-   Coloque este arquivo na mesma pasta de musica-1.mp3 e musica-2.mp3.
-   ===================================================================== */
+
 :root { --red: #d1102d; --green: #12923f; --bg: #0e0d0d; --card: rgba(30,28,28,.62); --line: rgba(255,255,255,.14); --ink: #fff; --mut: #b9b2ad; }
 * { box-sizing: border-box; margin: 0; }
+/* Cursor em forma de chama, o mesmo do site */
+:root { --cur: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='38' viewBox='0 0 44 56'%3E%3Cg stroke='%23fff' stroke-width='3' stroke-linejoin='round'%3E%3Cpath fill='%23c8102e' d='M20 2C21 12 33 18 33 32c0 11-7 18-15 18-8 0-13-6-13-14 0-8 6-14 10-20 1 5 3 7 5 8-1-8-1-14 0-22z'/%3E%3Cpath fill='%231f8a4c' d='M40 24C27 27 19 36 19 46c0 5 4 8 8 8 11 0 17-13 13-30z'/%3E%3C/g%3E%3C/svg%3E") 14 2, auto; }
+html, body, a, button, .lk, .mp-b, .mp-prog { cursor: var(--cur); }
+input[type=range] { cursor: var(--cur); }
 html { -webkit-text-size-adjust: 100%; }
 body { min-height: 100vh; min-height: 100dvh; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow-x: hidden; padding: max(22px, env(safe-area-inset-top)) 16px calc(110px + env(safe-area-inset-bottom)); display: flex; justify-content: center; }
 a { color: inherit; text-decoration: none; } button { font: inherit; color: inherit; }
@@ -63,7 +63,7 @@ h1 b { background: linear-gradient(90deg, #ff3b57, #2fd27a, #ff3b57); background
 
 /* ---- botões de link (barra enche de vermelho/verde ao passar o mouse) ---- */
 .links { width: 100%; margin-top: 18px; display: grid; gap: 14px; }
-.lk { position: relative; display: flex; align-items: center; gap: 14px; padding: 15px 16px; border-radius: 20px; text-align: left; background: var(--card); border: 1px solid var(--line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); overflow: hidden; isolation: isolate; cursor: pointer; transition: transform .25s, box-shadow .3s, border-color .3s; }
+.lk { position: relative; display: flex; align-items: center; gap: 14px; padding: 15px 16px; border-radius: 20px; text-align: left; background: var(--card); border: 1px solid var(--line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); overflow: hidden; isolation: isolate; transition: transform .25s, box-shadow .3s, border-color .3s; }
 .lk::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform .7s cubic-bezier(.3,.7,.2,1); }
 .lk.site::before, .lk.ig::before, .lk.msg::before { background: linear-gradient(90deg, #b8061c, var(--red)); } .lk.wpp::before, .lk.tt::before { background: linear-gradient(90deg, #0b7a39, var(--green)); }
 .lk::after { content: ""; position: absolute; left: 0; bottom: 0; height: 4px; width: 0; background: linear-gradient(90deg, #ff6e80, #4fd98e); transition: width .7s cubic-bezier(.3,.7,.2,1); }
@@ -80,7 +80,7 @@ h1 b { background: linear-gradient(90deg, #ff3b57, #2fd27a, #ff3b57); background
 /* ---- player de música (mesmas músicas do site) ---- */
 .mp { position: fixed; z-index: 10; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%); width: min(94vw, 460px); display: flex; align-items: center; gap: 8px; padding: 9px 12px 11px; border-radius: 999px; background: rgba(20,18,18,.82); border: 1px solid var(--line); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 10px 34px rgba(0,0,0,.5); overflow: hidden; }
 .mp[hidden] { display: none; }
-.mp-b { flex: none; width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; cursor: pointer; transition: background .2s, transform .2s; } .mp-b:hover { background: rgba(255,255,255,.12); } .mp-b:active { transform: scale(.9); }
+.mp-b { flex: none; width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; transition: background .2s, transform .2s; } .mp-b:hover { background: rgba(255,255,255,.12); } .mp-b:active { transform: scale(.9); }
 .mp-b svg { width: 18px; height: 18px; }
 .mp-play { width: 44px; height: 44px; background: linear-gradient(135deg, var(--red), var(--green)); box-shadow: 0 4px 14px rgba(0,0,0,.4); animation: pulso 2s ease-in-out infinite; } .mp-play:hover { background: linear-gradient(135deg, var(--red), var(--green)); transform: scale(1.08); }
 .mp.on .mp-play { animation: none; } @keyframes pulso { 50% { box-shadow: 0 0 0 7px rgba(209,16,45,.22); } }
@@ -91,7 +91,7 @@ h1 b { background: linear-gradient(90deg, #ff3b57, #2fd27a, #ff3b57); background
 .mp-tt { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; font-size: 13px; font-weight: 600; } .mp-tt span { display: inline-block; } .mp-tt span.rola { animation: rola 12s linear infinite; padding-right: 40px; }
 @keyframes rola { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .mp-vol { flex: none; display: flex; align-items: center; } .mp-vol input { width: 62px; accent-color: var(--green); }
-.mp-prog { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.12); cursor: pointer; } .mp-prog i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--red), var(--green)); }
+.mp-prog { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.12); } .mp-prog i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--red), var(--green)); }
 @media (max-width: 400px) { .mp-vol input { display: none; } .lk b { font-size: 16px; } }
 .aviso { position: fixed; z-index: 20; left: 50%; top: 18px; transform: translateX(-50%); max-width: 90vw; padding: 10px 16px; border-radius: 12px; background: #1b1211; border: 1px solid var(--line); font-size: 13px; }
 
