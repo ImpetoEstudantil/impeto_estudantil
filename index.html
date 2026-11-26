@@ -4,10 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ímpeto Estudantil · Links</title>
-<meta name="description" content="Ímpeto Estudantil, a chama da mudança. Acesse o site da chapa e entre na nossa Comunidade do WhatsApp.">
+<meta name="description" content="Ímpeto Estudantil, a chama da mudança. Acompanhe a chapa e entre na nossa Comunidade do WhatsApp.">
 <meta name="theme-color" content="#0e0d0d">
 <style>
-
+/* =====================================================================
+   ÍMPETO ESTUDANTIL · página de links (para a bio do Instagram)
+   Para trocar links, músicas ou a data, edite o bloco "CONFIGURAÇÃO" no fim do arquivo.
+   Coloque este arquivo na mesma pasta de musica-1.mp3 e musica-2.mp3.
+   ===================================================================== */
 :root { --red: #d1102d; --green: #12923f; --bg: #0e0d0d; --card: rgba(30,28,28,.62); --line: rgba(255,255,255,.14); --ink: #fff; --mut: #b9b2ad; }
 * { box-sizing: border-box; margin: 0; }
 /* Cursor em forma de chama, o mesmo do site */
@@ -75,6 +79,22 @@ h1 b { background: linear-gradient(90deg, #ff3b57, #2fd27a, #ff3b57); background
 .lk .ic svg { width: 26px; height: 26px; }
 .lk span.t { display: flex; flex-direction: column; min-width: 0; gap: 3px; } .lk b { font-size: 17px; } .lk small { font-size: 13px; color: var(--mut); overflow-wrap: anywhere; transition: color .3s; } .lk:hover small { color: #fff; }
 .lk .ar { margin-left: auto; font-size: 26px; line-height: 1; opacity: .5; transition: transform .25s, opacity .25s; } .lk:hover .ar { transform: translateX(5px); opacity: 1; }
+/* ---- botões travados (site e mensagem) + barra de progresso ---- */
+.lk.lock { opacity: .8; }
+.lk.lock .ic { filter: grayscale(.45); }
+.lk.lock:hover, .lk.lock:focus-visible { transform: none; box-shadow: none; border-color: var(--line); }
+.lk.lock:hover::before, .lk.lock:focus-visible::before, .lk.lock:active::before { transform: scaleX(0); }
+.lk.lock:hover::after, .lk.lock:focus-visible::after, .lk.lock:active::after { width: 0; }
+.lk.lock:active { transform: none; }
+.lk.lock:hover small { color: var(--mut); }
+.lk.lock .ar { display: grid; place-items: center; opacity: .75; } .lk.lock:hover .ar { transform: none; opacity: .75; }
+.lk .ar svg { width: 20px; height: 20px; }
+.lk.treme { animation: treme .4s; }
+@keyframes treme { 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+.pb { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.pb .trk { flex: 1; height: 7px; border-radius: 99px; background: rgba(255,255,255,.14); overflow: hidden; }
+.pb .trk i { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--red), var(--green)); background-size: 200% 100%; transition: width 1s; animation: flui 3s linear infinite; }
+.pb em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--mut); font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
 .rod { margin-top: 26px; font-size: 12px; color: var(--mut); opacity: .8; }
 
 /* ---- player de música (mesmas músicas do site) ---- */
@@ -138,9 +158,9 @@ body { min-height: 100svh; }
   </div>
 
   <nav class="links" aria-label="Links da chapa">
-    <a class="lk site" id="lkSite" target="_blank" rel="noopener">
+    <a class="lk site lock" id="lkSite" role="link" aria-disabled="true">
       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4.2 5.6 4.2 9S14.8 18.4 12 21c-2.8-2.6-4.2-5.6-4.2-9S9.2 5.6 12 3z"/></svg></span>
-      <span class="t"><b>Nosso site</b><small id="lkSiteTxt"></small></span><span class="ar">›</span>
+      <span class="t"><b id="lkSiteNome">Em breve</b><small id="lkSiteTxt">Uma surpresa está sendo preparada…</small><span class="pb" id="pb" role="progressbar" aria-label="Progresso para liberar o site" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="trk"><i id="pbFill"></i></span><em id="pbTxt">0%</em></span></span><span class="ar" id="lkSiteAr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9.5" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
     </a>
     <a class="lk wpp" id="lkWpp" target="_blank" rel="noopener">
       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.7 8.9c.3 2.6 2.8 5.1 5.6 5.9l1.2-1.3-1.9-.9-.8.7c-1-.4-1.9-1.3-2.3-2.3l.7-.8-.9-1.9z" fill="currentColor" stroke="none"/></svg></span>
@@ -154,9 +174,9 @@ body { min-height: 100svh; }
       <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.2 3c.3 2.4 1.8 4 4 4.2v3a7.3 7.3 0 0 1-4-1.3v6.3a5.8 5.8 0 1 1-5-5.8v3.2a2.7 2.7 0 1 0 1.9 2.6V3z"/></svg></span>
       <span class="t"><b>TikTok</b><small>@impetoestudantil</small></span><span class="ar">›</span>
     </a>
-    <a class="lk msg" id="lkMsg" target="_blank" rel="noopener">
+    <a class="lk msg lock" id="lkMsg" role="link" aria-disabled="true">
       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4.5"/></svg></span>
-      <span class="t"><b>Mande sua mensagem</b><small>Dúvidas e sugestões para a chapa</small></span><span class="ar">›</span>
+      <span class="t"><b>Mande sua mensagem</b><small id="lkMsgTxt"> Em Breve </small></span><span class="ar" id="lkMsgAr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9.5" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
     </a>
   </nav>
 </main>
@@ -185,6 +205,8 @@ var MSG_URL   = 'https://impetoestudantil.com.br/#mensagem';   /* abre o formul�
 var WHATS_URL = 'https://chat.whatsapp.com/GLB2rZaR86pAdUL1do9GYo';
 var INSTA_URL = 'https://www.instagram.com/impetoestudantil_/';
 var TIKTOK_URL = 'https://www.tiktok.com/@impetoestudantil';
+var SITE_INICIO = '2026-11-26T00:00:00-03:00';   /* quando a barra começa a encher (0%) */
+var SITE_LIBERA = '2026-12-01T08:00:00-03:00';   /* quando a barra chega a 100% e libera o site e a mensagem */
 var ELEICAO   = '2026-12-02T08:00:00-03:00';                                   /* 02/12/2026, 8h (Fortaleza) */
 var PLAYLIST  = [
   { titulo: 'Queen – We Will Rock You', arquivo: 'musica-1.mp3' },
@@ -195,8 +217,32 @@ var PLAYLIST  = [
   var $ = function (id) { return document.getElementById(id); };
 
   /* links */
-  $('lkSite').href = SITE_URL; $('lkSiteTxt').textContent = SITE_URL.replace(/^https?:\/\//, '');
-  $('lkMsg').href = MSG_URL; $('lkWpp').href = WHATS_URL; $('lkIg').href = INSTA_URL; $('lkTt').href = TIKTOK_URL;
+  $('lkWpp').href = WHATS_URL; $('lkIg').href = INSTA_URL; $('lkTt').href = TIKTOK_URL;
+
+  /* site e mensagem: travados, com barra de progresso até a data de liberação */
+  var sIni = new Date(SITE_INICIO).getTime(), sFim = new Date(SITE_LIBERA).getTime(), tp;
+  ['lkSite', 'lkMsg'].forEach(function (id) {
+    $(id).addEventListener('click', function (e) {
+      if (!this.classList.contains('lock')) return;
+      e.preventDefault(); this.classList.remove('treme'); void this.offsetWidth; this.classList.add('treme');
+    });
+  });
+  function liberar() {
+    clearInterval(tp);
+    var a = $('lkSite'), m = $('lkMsg');
+    a.href = SITE_URL; a.target = '_blank'; a.rel = 'noopener'; a.classList.remove('lock'); a.removeAttribute('aria-disabled'); a.removeAttribute('role');
+    m.href = MSG_URL; m.target = '_blank'; m.rel = 'noopener'; m.classList.remove('lock'); m.removeAttribute('aria-disabled'); m.removeAttribute('role');
+    $('lkSiteNome').textContent = 'Nosso site'; $('lkSiteTxt').textContent = SITE_URL.replace(/^https?:\/\//, ''); $('pb').style.display = 'none';
+    $('lkMsgTxt').textContent = 'Dúvidas e sugestões para a chapa';
+    $('lkSiteAr').textContent = '›'; $('lkMsgAr').textContent = '›';
+  }
+  function progresso() {
+    var p = (Date.now() - sIni) / (sFim - sIni);
+    if (!(sFim > sIni) || p >= 1) { liberar(); return; }
+    p = Math.max(0, p); var n = Math.floor(p * 100);
+    $('pbFill').style.width = (p * 100) + '%'; $('pbTxt').textContent = n + '%'; $('pb').setAttribute('aria-valuenow', n);
+  }
+  progresso(); tp = setInterval(progresso, 15000);
 
   /* brasas */
   var br = $('brasas');
